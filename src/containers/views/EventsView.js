@@ -12,7 +12,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchEvents: () => dispatch(rest.actions.events.get()),
+  fetchEvents: userId => {
+    dispatch(rest.actions.events.get({ userId }));
+  },
 });
 
 class EventsView extends Component {
@@ -30,13 +32,18 @@ class EventsView extends Component {
   };
 
   componentDidMount = () => {
-    this.props.fetchEvents();
+    const userId = this.props.auth.data.decoded
+      ? this.props.auth.data.decoded.id
+      : null;
+
+    this.props.fetchEvents(userId);
   };
 
   renderContent = () => {
     const { events } = this.props;
 
     if (!events.loading) {
+      console.log('EVEEEENTS___', events);
       return <EventsList events={events} />;
     }
 
