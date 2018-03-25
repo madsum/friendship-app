@@ -86,6 +86,7 @@ class EventDetailView extends Component {
   };
 
   render() {
+    console.log(this.props.eventDetails);
     if (!this.props.auth.data.decoded) {
       return (
         <View style={{ marginTop: 30 }}>
@@ -100,7 +101,6 @@ class EventDetailView extends Component {
       const userId = this.props.auth.data.decoded
         ? this.props.auth.data.decoded.id
         : null;
-      console.log(this.props.eventParticipation);
       const {
         title,
         description,
