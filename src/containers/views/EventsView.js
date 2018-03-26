@@ -9,7 +9,7 @@ import EventsList from '../../components/Events/EventsList';
 const mapStateToProps = state => ({
   events: state.events,
   auth: state.auth,
-  changeOrder: state.changeOrder,
+  //changeOrder: state.changeOrder,         -- You don't need a general state here
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -20,8 +20,9 @@ const mapDispatchToProps = dispatch => ({
 
 class EventsView extends Component {
   state = {
-    changeOrder: false,
+    initialOrder: true, //Called it initialOrder because it is true only for the initial Render.
   };
+
   static navigationOptions = {
     title: 'Events',
     header: {
@@ -46,6 +47,11 @@ class EventsView extends Component {
   renderContent = () => {
     const { events } = this.props;
 
+    // If the user wants to change the order, you reverse the events list here
+    if (!this.state.initialOrder) {
+      events.data.reverse();
+    }
+
     if (!events.loading) {
       return <EventsList events={events} />;
     }
@@ -53,7 +59,12 @@ class EventsView extends Component {
     return <ActivityIndicator />;
   };
 
-  changeSortOrder = () => {};
+  changeSortOrder = () => {
+    //Here, we only have the choice between 'Recommended First' and 'Recommended Last' so a boolean is enough
+    // I just change the state of initialOrder to false every time because after the initial render, the list has to be updated
+    // every time.
+    this.setState({ initialOrder: false });
+  };
 
   render = () => {
     if (!this.props.auth.data.decoded) {
