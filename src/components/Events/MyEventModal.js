@@ -9,13 +9,7 @@ const ButtonOption = styled.View`
 `;
 // TODO delete useless style and import
 // _hideModal, state.isModalVisible, _onPressButton, this.props.signOut()
-const MyProfileModal = ({
-  hideModal,
-  isModalVisible,
-  onPressButton,
-  signOut,
-  onFeedback,
-}) => {
+const MyEventModal = ({ hideModal, isModalVisible, deleteEvent }) => {
   return (
     <Modal
       backdropColor="#2a343c"
@@ -42,30 +36,8 @@ const MyProfileModal = ({
         </TouchableOpacity>
 
         <ButtonOption>
-          <TouchableOpacity onPress={onPressButton} style={styles.buttonStyle}>
-            <Text style={styles.buttonTextStyle}>Privacy Settings</Text>
-          </TouchableOpacity>
-        </ButtonOption>
-
-        <ButtonOption>
-          <TouchableOpacity onPress={onFeedback} style={styles.buttonStyle}>
-            <Text style={styles.buttonTextStyle}>Send Feedback</Text>
-          </TouchableOpacity>
-        </ButtonOption>
-
-        <ButtonOption>
-          <TouchableOpacity
-            onPress={() => signOut()}
-            style={styles.buttonStyle}
-          >
-            <Text
-              style={[
-                styles.buttonTextStyle,
-                { fontFamily: 'NunitoSans-Bold' },
-              ]}
-            >
-              Log Out
-            </Text>
+          <TouchableOpacity style={styles.buttonStyle}>
+            <Text style={styles.buttonTextStyle}>Edit</Text>
           </TouchableOpacity>
         </ButtonOption>
       </View>
@@ -88,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MyProfileModal;
+export default MyEventModal;

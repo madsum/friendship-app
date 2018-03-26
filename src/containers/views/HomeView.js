@@ -1,18 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ActivityIndicator, FlatList, View, Text } from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  View,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({});
 
 export class HomeView extends React.Component {
-  state = {};
-
   render() {
     return (
-      <View>
-        <Text>Home View </Text>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: '#ffffff',
+        }}
+      >
+        <Text>Hello, this is the Home View </Text>
       </View>
     );
   }

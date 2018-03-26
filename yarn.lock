@@ -4991,8 +4991,8 @@ react-native-modal@^4.1.1:
     react-native-animatable "^1.2.3"
 
 react-native-popup-menu@^0.12.2:
-  version "0.12.2"
-  resolved "https://registry.yarnpkg.com/react-native-popup-menu/-/react-native-popup-menu-0.12.2.tgz#6568b52cf645663f060a550f23241fa1552bfa0e"
+  version "0.12.3"
+  resolved "https://registry.yarnpkg.com/react-native-popup-menu/-/react-native-popup-menu-0.12.3.tgz#547544e2f4606b907a338e3f9992495d67c76157"
 
 react-native-reversed-flat-list@^1.0.2:
   version "1.0.2"

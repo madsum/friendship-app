@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
 import {
   CompatibilityText,
   Details,
@@ -37,8 +36,8 @@ const ProfileTopPart = props => {
     username,
     myProfile,
     genderList,
+    showEditForm,
   } = props;
-
   const getAge = () => {
     const parsedBirthYear = parseInt(birthyear);
     const now = new Date();
@@ -105,7 +104,31 @@ const ProfileTopPart = props => {
         }}
       >
         <Image source={waveShape} style={styles.waveShape}>
-          <UsernameText style={styles.username}>{username}</UsernameText>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginTop: 25,
+            }}
+          >
+            <UsernameText>
+              {username.length > 15 ? (
+                username.substr(0, 15).concat('…')
+              ) : (
+                username
+              )}
+            </UsernameText>
+            {myProfile ? (
+              <TouchableOpacity onPress={() => showEditForm()}>
+                <Image
+                  source={require('../../../assets/edit.png')}
+                  style={{ width: 38, height: 38 }}
+                />
+              </TouchableOpacity>
+            ) : null}
+          </View>
           <CompatibilityText style={{ textAlign: 'center' }}>
             {myProfile ? 'You have ' : null}
             <YeahColor>
@@ -144,9 +167,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontSize: Platform.OS === 'android' ? 30 : 40,
     paddingTop: 8,
-  },
-  username: {
-    marginTop: 25,
   },
   waveShape: {
     height: Dimensions.get('window').width * height / width,

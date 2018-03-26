@@ -19,6 +19,8 @@ import UsersForTagView from '../views/UsersForTagView';
 import EventDetailView from '../views/EventDetailView';
 import EventCreateView from '../views/EventCreateView';
 import HomeView from '../views/HomeView';
+import Report from '../views/Report/Report';
+import Feedback from '../views/Feedback/Feedback';
 
 const StackNavigatorConfig = {
   navigationOptions: {
@@ -113,6 +115,14 @@ export default StackNavigator(
     HomeView: {
       screen: HomeView,
       navigationOptions: { title: 'People page' },
+    },
+    Report: {
+      screen: Report,
+      navigationOptions: { header: () => null },
+    },
+    Feedback: {
+      screen: Feedback,
+      navigationOptions: { header: () => null },
     },
     // ## End StackNavigator Views ##
   },
