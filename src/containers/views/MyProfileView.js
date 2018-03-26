@@ -154,6 +154,7 @@ class MyProfile extends React.Component {
     const srcImage = this.props.currentUser.data.image
       ? { uri: 'data:image/png;base64,' + this.props.currentUser.data.image }
       : require('../../../assets/img/placeholder/grone.jpg');
+    console.log('IMAGE PROFILE', srcImage);
 
     const location = this.props.currentUser.data.locations
       ? this.props.currentUser.data.locations.join(',')

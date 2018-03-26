@@ -121,6 +121,7 @@ class EventDetailView extends Component {
               this.props.eventDetails.data.eventImage,
           }
         : require('../../../assets/img/placeholder/grone.jpg');
+      console.log('IMAGE EVENT', srcImage);
 
       return (
         <EventContainer>

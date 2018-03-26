@@ -29,10 +29,7 @@ const EventTopPart = props => {
   const displaySettingsButton = () => {
     return (
       <TouchableOpacity onPress={showModal} style={styles.settings}>
-        <Image
-          style={styles.settingsIcon}
-          source={require('../../../assets/settingsIcon.png')}
-        />
+        <Image style={styles.settingsIcon} source={srcImage} />
       </TouchableOpacity>
     );
   };

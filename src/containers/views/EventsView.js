@@ -32,7 +32,7 @@ const mapDispatchToProps = dispatch => ({
 
 class EventsView extends Component {
   state = {
-    changeOrder: false,
+    initialOrder: true,
   };
   static navigationOptions = {
     title: 'Events',
@@ -57,6 +57,10 @@ class EventsView extends Component {
   renderContent = () => {
     const { events } = this.props;
 
+    if (!this.state.initialOrder) {
+      events.data.reverse();
+    }
+
     if (!events.loading) {
       return <EventsList events={events} />;
     }
@@ -65,7 +69,13 @@ class EventsView extends Component {
   };
   // render
 
-  changeSortOrder = () => {};
+  changeSortOrder = () => {
+    //if (this.state.initialOrder) {
+    this.setState({ initialOrder: false });
+    //} else if (!this.state.initialOrder) {
+    //  this.setState({ initialOrder: true });
+    //}
+  };
 
   render = () => {
     if (!this.props.auth.data.decoded) {
@@ -80,7 +90,7 @@ class EventsView extends Component {
       <View style={{ flex: 1 }}>
         <EventsHeader headerText="Events" />
         <TouchableOpacity onPress={() => this.changeSortOrder()}>
-          <Text> Recommended </Text>
+          <Text style={{ alignSelf: 'right' }}> Recommended </Text>
         </TouchableOpacity>
         {this.renderContent()}
         <TouchableOpacity
