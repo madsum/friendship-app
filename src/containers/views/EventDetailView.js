@@ -72,6 +72,7 @@ class EventDetailView extends Component {
       });
     }
   }
+
   async handleButtonPress(eventId, userId) {
     this.setState({
       loaded: false,
@@ -90,6 +91,7 @@ class EventDetailView extends Component {
   };
 
   render() {
+    console.log(this.props.eventDetails);
     if (!this.props.auth.data.decoded) {
       return (
         <View style={{ marginTop: 30 }}>
