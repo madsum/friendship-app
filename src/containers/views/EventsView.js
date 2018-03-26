@@ -42,6 +42,7 @@ class EventsView extends Component {
 
     return <ActivityIndicator />;
   };
+  // render
 
   render = () => {
     if (!this.props.auth.data.decoded) {
